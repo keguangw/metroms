@@ -22,5 +22,5 @@ pair  = nc.variables['Pair']
 rh = spec2hum(qair[:], tair[:], pair[:])
 qair[:] = rh
 nc.sync()
-nc.close()
+#nc.close()
 
