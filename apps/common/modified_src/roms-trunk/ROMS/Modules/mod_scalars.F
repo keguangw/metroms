@@ -390,6 +390,11 @@
         logical, allocatable :: Lm2CLM(:)            ! 2D momentum
         logical, allocatable :: Lm3CLM(:)            ! 3D momentum
         logical, allocatable :: LtracerCLM(:,:)      ! tracers
+
+#ifdef COIN_SST
+        logical,  allocatable :: assim_SST(:)
+        real(r8), allocatable :: SSTnudass(:)
+#endif
 !
 !  Switched to nudge to climatology fields.
 !
@@ -1794,6 +1799,11 @@
       allocate ( Lm3CLM(Ngrids) )
       allocate ( LtracerCLM(MT,Ngrids) )
 
+#ifdef COIN_SST
+      allocate ( assim_SST(Ngrids) )
+      allocate ( SSTnudass(Ngrids) )
+#endif
+
       allocate ( Lnudging(Ngrids) )
       allocate ( LnudgeM2CLM(Ngrids) )
       allocate ( LnudgeM3CLM(Ngrids) )
@@ -2315,6 +2325,10 @@
         Jdigits(ng)=INT(LOG10(REAL(Mm(ng),r8)))+1
 #ifdef SOLVE3D
         Kdigits(ng)=INT(LOG10(REAL(N (ng),r8)))+1
+#endif
+#ifdef COIN_SST
+        assim_SST(ng) = .FALSE.
+        SSTnudass(ng) = 1.0_r8
 #endif
         CLM_FILE(ng)=.FALSE.
         Lnudging(ng)=.FALSE.
