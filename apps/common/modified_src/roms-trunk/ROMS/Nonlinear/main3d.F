@@ -118,6 +118,9 @@
       USE step_floats_mod, ONLY : step_floats
 # endif
       USE wvelocity_mod, ONLY : wvelocity
+# ifdef COIN_SST
+      USE sst_nudge_mod, ONLY : sst_nudge
+# endif
 !
       implicit none
 !
@@ -384,6 +387,9 @@
 # endif
 # ifdef BBL_MODEL
                 CALL bblm (ng, tile)
+# endif
+# ifdef COIN_SST
+                CALL sst_nudge (ng,tile)
 # endif
                 CALL set_vbc (ng, tile)
 # if defined SSH_TIDES || defined UV_TIDES

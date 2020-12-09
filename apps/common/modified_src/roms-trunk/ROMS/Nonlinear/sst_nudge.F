@@ -108,7 +108,7 @@
 
       IF (.not. nudge_now) RETURN
 
-      rda = 60. * dt(ng) * sec2day / SSTnudass(ng)
+      rda = dt(ng) * sec2day / SSTnudass(ng)
       IF (Master) THEN
          WRITE(stdout,*) 'assim_SST = ', assim_SST(ng)
          WRITE(stdout,*) 'SSTnudass = ', SSTnudass(ng)
