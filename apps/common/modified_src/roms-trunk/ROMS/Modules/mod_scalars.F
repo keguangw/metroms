@@ -393,6 +393,7 @@
 
 #ifdef COIN_SST
         logical,  allocatable :: assim_SST(:)
+        logical,  allocatable :: p_nudging(:)
         real(r8), allocatable :: SSTnudass(:)
 #endif
 !
@@ -1801,6 +1802,7 @@
 
 #ifdef COIN_SST
       allocate ( assim_SST(Ngrids) )
+      allocate ( p_nudging(Ngrids) )
       allocate ( SSTnudass(Ngrids) )
 #endif
 
@@ -2328,6 +2330,7 @@
 #endif
 #ifdef COIN_SST
         assim_SST(ng) = .FALSE.
+        p_nudging(ng) = .FALSE.
         SSTnudass(ng) = 1.0_r8
 #endif
         CLM_FILE(ng)=.FALSE.

@@ -1943,6 +1943,15 @@
      &               SetParAccess = .FALSE.)
       IF (exit_flag.ne.NoError) RETURN
 
+      Vinfo( 1)='p_nuding'
+      Vinfo( 2)='perfect nuding activation switch'
+      Vinfo( 9)='.FALSE.'
+      Vinfo(10)='.TRUE.'
+      status=def_var(ng, model, ncid, varid, nf90_int,                  &
+     &               1, (/0/), Aval, Vinfo, ncname,                &
+     &               SetParAccess = .FALSE.)
+      IF (exit_flag.ne.NoError) RETURN
+
       Vinfo( 1)='SSTnudass'
       Vinfo( 2)='SST nudging assimilation time scale'
       Vinfo( 3)='day'

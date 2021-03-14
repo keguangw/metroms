@@ -103,7 +103,7 @@
 
 # include "set_bounds.h"
 
-! Deside if we will do nuding now or not 
+! Deside if we will do nudging now or not 
       nudge_now = assim_SST(ng)
 
       IF (.not. nudge_now) RETURN
@@ -111,6 +111,7 @@
       rda = dt(ng) * sec2day / SSTnudass(ng)
       IF (Master) THEN
          WRITE(stdout,*) 'assim_SST = ', assim_SST(ng)
+         WRITE(stdout,*) 'p_nudging  = ', p_nudging(ng)
          WRITE(stdout,*) 'SSTnudass = ', SSTnudass(ng)
          WRITE(stdout,*) 'dt = ', dt(ng)
          WRITE(stdout,*) 'rda = ', rda
@@ -124,6 +125,7 @@
               mod_err2 = mod_err**2 + sste(i,j)**2
 
               gain   = mod_err2 / (mod_err2 + sste(i,j)**2 + 1.0e-6_r8)
+              IF (p_nudging(ng)) gain = 0.99_r8
               wt = 1.0_r8 - (1.0_r8 - gain)**rda
 
               t(i,j,N(ng),nrhs,itemp) = t(i,j,N(ng),nrhs,itemp) &
