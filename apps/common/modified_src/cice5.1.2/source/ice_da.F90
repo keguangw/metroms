@@ -360,7 +360,7 @@ subroutine da_coin    (nx_block,            ny_block,      &
                mod_err2 = mod_err**2 + aerr**2
 
                gain   = mod_err2 / (mod_err2 + puny + aerr**2)
-               if (da_insert) gain = 0.99_dbl_kind
+               if (da_insert) gain = 0.9999_dbl_kind
 
                weight = c1 - (c1 - gain)**rda
                if (corr_bias) then

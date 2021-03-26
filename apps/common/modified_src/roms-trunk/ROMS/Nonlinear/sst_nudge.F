@@ -125,7 +125,7 @@
               mod_err2 = mod_err**2 + sste(i,j)**2
 
               gain   = mod_err2 / (mod_err2 + sste(i,j)**2 + 1.0e-6_r8)
-              IF (p_nudging(ng)) gain = 0.99_r8
+              IF (p_nudging(ng)) gain = 0.9999_r8
               wt = 1.0_r8 - (1.0_r8 - gain)**rda
 
               t(i,j,N(ng),nrhs,itemp) = t(i,j,N(ng),nrhs,itemp) &
