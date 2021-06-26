@@ -35,7 +35,7 @@ elif [ "$METROMS_MYHOST" == "met_ppi" ]; then
 	export METROMS_APPDIR=$HOME/sea/ROMS/metroms_apps
     else
 	export METROMS_BASEDIR=$HOME/metroms
-	export METROMS_TMPDIR=/lustre/storeB/users/$USER/metroms_run
+	export METROMS_TMPDIR=/lustre/storeA/users/$USER/metroms_run
 	export METROMS_BLDDIR=$METROMS_TMPDIR
 	export METROMS_APPDIR=$HOME/metroms_apps
     fi
@@ -57,6 +57,7 @@ else
     echo "Undefined METROMS_MYHOST ", $METROMS_MYHOST
 fi
 
+mkdir -p $METROMS_TMPDIR
 export PYTHONPATH=$PYTHONPATH:$METROMS_BASEDIR/apps/common/python/
 
 #=====================================================================

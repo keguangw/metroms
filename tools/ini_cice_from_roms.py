@@ -22,7 +22,7 @@ def set_to_val(f,variable,icemask,val=0.0,n=-999):
 # Make initialization of new cice-file...
 app = 'barents-2.5km'
 romsgrd = os.environ.get('METROMS_APPDIR') + '/' + app + '/grid'
-initdir = os.environ.get('METROMS_TMPDIR') + '/../Initial/' + app 
+initdir = os.environ.get('METROMS_TMPDIR') + '/' + app 
 
 romsfile = initdir + '/ocean_ini.nc'
 romsgrid = romsgrd + '/' + app + '_grd.nc'
@@ -42,7 +42,7 @@ t1  = datetime(1970,1,1) + timedelta(t0)
 cicefile = initdir + '/iced.' + t1.strftime('%Y-%m-%d-') + str(100000 + t1.hour*3600)[1:] + '.nc'
 print cicefile
 
-sp.call(['cp',initdir+'/iced_i' + chi + '_s' + chs + '.nc',cicefile])
+sp.call(['cp',initdir+'/iced_tmp.nc',cicefile])
 
 f = open(initdir+'/ice.restart_file','w')
 f.write(cicefile)

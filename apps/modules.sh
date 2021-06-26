@@ -32,6 +32,8 @@ elif [ "$METROMS_MYHOST" == "met_ppi" ]; then
     # module load netcdf/4.6.2-intel2018
     # module load openmpi/3.1.3-intel2018
     module load nco/4.7.9-intel2018
+  elif [ `lsb_release -sc` == 'bionic' ]; then
+    echo 'not available yet ...'
   else
     echo "Undefined linux distro for met_ppi"
   fi
